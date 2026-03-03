@@ -1,22 +1,23 @@
-# 🎲 La Lotería Mexicana - Simulador
+# 🎲 La Lotería Mexicana - Simulador (MVP)
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org)
+[![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org)
 [![License](https://img.shields.io/badge/License-Public%20Domain-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Estado-En%20desarrollo-yellow.svg)]()
+[![Status](https://img.shields.io/badge/Estado-Prototype-orange.svg)]()
 
-> Un simulador digital del clásico juego de mesa mexicano **La Lotería**, con sus 54 cartas tradicionales y versos auténticos.
+> Prototipo inicial de simulador del juego tradicional mexicano **La Lotería**. 
+> Versión de consola automática para validación de lógica.
 
 ---
 
 ## 📋 Índice
 
 - [🎮 ¿Qué es La Lotería?](#-qué-es-la-lotería)
-- [✨ Características](#-características)
-- [🚀 Instalación y Uso](#-instalación-y-uso)
-- [🃏 Cartas y Versos](#-cartas-y-versos)
+- [⚡ Estado Actual](#-estado-actual)
+- [🚀 Ejecución Rápida](#-ejecución-rápida)
+- [🃏 Cartas y Versos (Referencia)](#-cartas-y-versos-referencia)
+- [🗺️ Roadmap](#-roadmap)
 - [🤝 Cómo Contribuir](#-cómo-contribuir)
 - [📜 Licencia](#-licencia)
-- [🙏 Agradecimientos](#-agradecimientos)
 
 ---
 
@@ -34,62 +35,78 @@
 
 ---
 
-## ✨ Características
+## ⚡ Estado Actual (v0.1 - Prototype)
 
-- ✅ Mazo completo de **54 cartas** con versos tradicionales auténticos
-- ✅ Sistema de barajado aleatorio
-- ✅ Interfaz de línea de comandos (CLI) intuitiva
-- ✅ Código modular y fácil de extender
-- ✅ Documentación en español
-- ✅ Listo para agregar interfaz gráfica (GUI) o web
+### ✅ Lo que SÍ funciona:
+- [x] Mazo de 54 cartas con barajado aleatorio (`random.shuffle`)
+- [x] Generación de 4 tablas de juego con 16 cartas cada una
+- [x] Simulación automática: canto de cartas y detección de ganador
+- [x] Output en consola con conteo de cartas restantes por tabla
+- [x] Código funcional sin dependencias externas
+
+### ❌ Lo que AÚN NO está implementado:
+- [ ] Interfaz interactiva (el juego corre solo, sin input del usuario)
+- [ ] Argumentos de línea de comandos (`--help`, `--modo`, etc.)
+- [ ] Visualización de tablas en formato grid 4x4
+- [ ] Nombres completos de cartas ("El Gallo" vs "Gallo")
+- [ ] Versos/coplas tradicionales en el output
+- [ ] Manejo de errores o validaciones
+- [ ] Tests unitarios o documentación de código
+
+> 💡 **Nota**: Esta es una versión mínima viable (MVP) para validar la lógica central. 
+> ¡Las mejoras están en el roadmap!
 
 ---
 
-## 🚀 Instalación y Uso
+## 🚀 Ejecución Rápida
 
-### Requisitos previos
-- Python 3.8 o superior
-- pip (gestor de paquetes de Python)
+### Requisitos
+- Python 3.6 o superior
+- Sin dependencias externas (solo librería estándar)
 
-### Pasos de instalación
+### Pasos
 
 ```bash
 # 1. Clonar el repositorio
 git clone https://github.com/frantizek/Simuladores.git
 cd Simuladores/Loteria
 
-# 2. (Opcional) Crear entorno virtual
-python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
-
-# 3. Instalar dependencias (si existen)
-pip install -r requirements.txt
-
-# 4. Ejecutar el simulador
-python main.py
+# 2. Ejecutar el simulador
+python loteria.py
 ```
 
-### ▶️ Uso básico
+### 📤 Output esperado
 
-```bash
-# Iniciar nueva partida
-python main.py --nuevo
+```
+['Gallo', 'Diablo', 'Dama', ...]  # Tabla 1
+['Barril', 'Árbol', 'Melón', ...]  # Tabla 2
+...
 
-# Ver lista de cartas
-python main.py --cartas
+SE VA Y SE CORRE ...
 
-# Ayuda completa
-python main.py --help
+Gallo
+T1 = 15 T2 = 16 T3 = 16 T4 = 16
+Diablo
+T1 = 14 T2 = 16 T3 = 16 T4 = 16
+...
+
+BUENAS!!!
+Cartas Cantadas = 32 
+Quedaron en el mazo por cantar = 22
 ```
 
-> 💡 *Nota: Si el proyecto aún no tiene archivos ejecutables, esta sección se actualizará cuando estén disponibles.*
+> ⚠️ **Nota**: El juego se ejecuta automáticamente de principio a fin. 
+> No hay interacción del usuario en esta versión.
 
 ---
 
-## 🃏 Cartas y Versos
+## 🃏 Cartas y Versos (Referencia Cultural)
 
 <details>
 <summary><strong>📜 Ver las 54 cartas completas (clic para expandir)</strong></summary>
+
+> 📌 *Estos versos son parte de la tradición oral mexicana. 
+> Actualmente NO están implementados en el código, pero se incluyen aquí como referencia para futuras versiones.*
 
 | # | Carta | Verso tradicional |
 |---|-------|------------------|
@@ -154,23 +171,50 @@ python main.py --help
 
 ---
 
+## 🗺️ Roadmap
+
+### 🔜 Próximamente (v0.2)
+- [ ] Agregar nombres completos a las cartas ("El/La + nombre")
+- [ ] Formato de tablas en grid 4x4 para mejor legibilidad
+- [ ] Opción de modo manual: avanzar carta por carta con input
+- [ ] Agregar versos tradicionales al output del "gritador"
+
+### 🚀 Futuro (v1.0)
+- [ ] Refactorizar código: funciones, clases, separación de responsabilidades
+- [ ] Agregar interfaz gráfica con Tkinter o PyQt
+- [ ] Sistema de múltiples jugadores humanos en red
+- [ ] Audio/voz para los versos cantados
+- [ ] Tests unitarios y documentación técnica
+
+### 💡 ¿Tienes ideas?
+¡Abre un issue o contribuye con un PR! Todas las sugerencias son bienvenidas.
+
+---
+
 ## 🤝 Cómo Contribuir
 
 ¡Las contribuciones son bienvenidas! 🎉
 
+### Para empezar:
 1. Haz **fork** del proyecto
-2. Crea tu rama de característica (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add: AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
+2. Crea tu rama: `git checkout -b feature/tu-idea`
+3. Commit: `git commit -m 'Add: descripción clara'`
+4. Push: `git push origin feature/tu-idea`
 5. Abre un **Pull Request**
 
-### 💡 Ideas para contribuir:
-- [ ] Agregar interfaz gráfica con Tkinter o PyQt
+### 💡 Ideas para contribuir (principiantes):
+- [ ] Agregar encoding UTF-8 al inicio del archivo
+- [ ] Crear constantes para números mágicos (54, 16, 4)
+- [ ] Extraer lógica a funciones reutilizables
+- [ ] Agregar docstrings básicos
+- [ ] Corregir formato de output de tablas
+- [ ] Restaurar nombres completos de cartas
+
+### 🔧 Ideas para contribuyentes avanzados:
+- [ ] Implementar interfaz gráfica con Tkinter
+- [ ] Agregar sistema de argumentos con `argparse`
+- [ ] Crear tests con `pytest` o `unittest`
 - [ ] Implementar modo multijugador en red
-- [ ] Añadir voces o audio para los versos
-- [ ] Crear generador de tablas aleatorias
-- [ ] Traducir a otros idiomas
-- [ ] Mejorar tests y documentación
 
 ---
 
@@ -197,5 +241,5 @@ Esto significa que eres libre de:
 
 <div align="center">
   <sub>Hecho con ❤️ y tradición mexicana por <a href="https://github.com/frantizek">@frantizek</a></sub><br>
-  <sub>¡Que gane la mejor tabla! 🎲✨</sub>
+  <sub>Versión MVP • ¡Mejoras en camino! 🎲✨</sub>
 </div>
